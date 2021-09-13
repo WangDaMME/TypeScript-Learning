@@ -143,3 +143,62 @@ function whileLoop()
         console.log("haha")
     }
 }
+
+
+//5. 类型适配 (类型断言) Type Assertions
+
+let message : any;
+
+message = "abc";
+message.endWith("c"); // 编译器没有内置函数的匹配
+
+// 方法1. （<强转> 适配） 圆括号 圈起来
+let dd = (<string> message).endsWith("c"); // （<强转> 适配） 圆括号 圈起来
+// 方法2. as 关键字
+let dd2 = (message as string).endsWith("c");
+
+
+//6. 函数类型
+
+// 1.可以给形参 绑定类型
+let fLog1 = function(message : string)
+{
+    console.log(message)
+}
+let fLog2 = ()=>     // es6 emascript 引入 箭头函数
+{
+    console.log(message)
+}
+
+// 6.2 可以用 "?" 表示参数的 可选性
+
+let fLog3 = (nessage: string , code?: number, status: number =0)=> // status默认值为0
+{
+    console.log(message)
+}
+fLog3("httpOk")
+
+
+
+//7. Object 对象类型 
+// 类型就是自己， 而且会 自动匹配 key的 类型, eg. age: number
+const student = { // : object
+    firstname : "xiao",
+    lastname : "ming",
+    age: 18
+}
+
+// console.log(student.nickname) // 【报错】 调用一个不存在的key 不会报错, 但是 typescript 更安全 所以会在compile 报错
+
+
+//7.2 【显示定义 object 类型】
+const studentB : {
+    firstname : string,
+    lastname : string,
+    age: number
+
+} ={
+    firstname : "aaa",
+    lastname : "bbb",
+    age: 8
+}
