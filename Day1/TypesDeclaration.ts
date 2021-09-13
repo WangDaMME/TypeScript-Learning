@@ -221,3 +221,44 @@ drawPoint( {x:105, y:24})
 
 // 面对对象接口 来对 point 加以限制
 
+
+
+// 9. class 封装 -> implements interface
+
+interface IPoint
+{
+    x: number;
+    y: number;
+    drawPoint: ()=> void; // 函数类型 返回值 为void  （）里为形参类型
+    getDistance : (p:IPoint) => number; // （）: 传入一个point  返回number 和另一个点的距离
+}
+
+// 实现接口
+class Point implements IPoint
+{
+    x: number;
+    y: number;
+
+    // constructor 构造函数
+    constructor(x: number, y: number)  // x?: number 可选项
+    {
+        this.x = x;
+        this.y = y;
+    }
+
+
+    // override 方法
+    drawPoint = ()=>{
+        console.log("x: ", this.x, " y: ", this.y);
+    }
+
+    getDistance = (p:IPoint) =>{
+        return Math.pow(p.x - this.x,2) + Math.pow(p.y - this.y,2);
+    }
+}
+
+const p1 = new Point( 2,3); // 是一个instance
+// 初始化 x , y   ----> construtor 函数
+// p1.x = 2;
+// p1.y = 3;
+p1.drawPoint() ; // 调用
