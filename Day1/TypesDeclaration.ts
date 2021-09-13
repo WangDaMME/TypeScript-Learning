@@ -107,3 +107,39 @@ if(typeof randomVal2 ==='function')
 }
 
 if(typeof randomVal2 === 'string') randomVal2.toUpperCase()
+
+// 4. void , undefined, never
+
+// 所有 void vs undefined , 
+// void: 压根不存在
+// undefined: 有，但没经过初始化
+
+function printResult() : void  // 默认void
+{
+    console.log("xxx")
+}
+function printResult2() : undefined  // 默认void
+{
+    console.log("xxx")
+    return  ; //加一个return就好了
+}
+
+// never ：一个函数 永远执行不完， usecases: throw, / while 死循环
+
+function throwError(message: string , errorCode : number) : never // 类型为never 永远执行不完
+{
+    throw {
+        message,
+        errorCode
+    }
+}   
+
+throwError("not found", 404);
+
+function whileLoop()
+{
+    while(true)
+    {
+        console.log("haha")
+    }
+}
