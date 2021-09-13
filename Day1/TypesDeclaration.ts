@@ -202,3 +202,22 @@ const studentB : {
     lastname : "bbb",
     age: 8
 }
+
+
+//8. Interface 
+interface Point{
+    x: number;
+    y: number;
+}
+
+let drawPoint = (point: Point) =>{
+    console.log( {x: point.x , y: point.y}) //x ， y 是point 2个属性
+}
+
+//问题 是 可以传入不相关的逻辑
+drawPoint( {x:105, y:24})
+// drawPoint( {x:"你", y:"好"})  // 报错
+// drawPoint( {weather: "干燥", temperature:"5 celcius"})  // 报错
+
+// 面对对象接口 来对 point 加以限制
+
