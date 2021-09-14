@@ -262,3 +262,35 @@ const p1 = new Point( 2,3); // 是一个instance
 // p1.x = 2;
 // p1.y = 3;
 p1.drawPoint() ; // 调用
+
+
+
+//10. 泛型 Generics
+let lastInArray  = (arr: Array<number>) =>{ // 形参 数字类型数组
+
+    return arr[arr.length-1]
+}
+
+const l1 = lastInArray( [1,2,3,4]);
+// const l2 = lastInArray( ["1","2","3"]); // 如果改成any
+
+// 参数 动态类型 T
+let lastInArray2  = <T>(arr: Array<T>) =>{ // 形参 或者写成 T[]
+
+    return arr[arr.length-1]
+}
+const l2 = lastInArray2( ["1", "2"]);  // 或联合类型union:  string | number
+
+
+// 2个元素 有不同的 动态类型 各自设置
+let makeTuple = (x: number, y: string) => [x,y]
+let makeTuple2 = <T,Y>(x: T, y: Y) => [x,y]  // 多泛型的表达方式
+
+const v1 = makeTuple2(1, "a");
+const v2 = makeTuple2("a", true); //会动态 匹配类型
+
+//10.3 用 = 赋值默认类型
+
+let makeTuple3 = <T,Y = number>(x: T, y: Y) => [x,y]  
+
+const v3 = makeTuple3<boolean, number> (true,1); //也可强制声明类型
